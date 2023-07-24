@@ -57,8 +57,8 @@ public class ControlePessoa {
                 pessoa.setName(name);
                 p = pessoa;
             }
-            return p;
         }
+            return p;
     }
 
     @GetMapping("/home")
