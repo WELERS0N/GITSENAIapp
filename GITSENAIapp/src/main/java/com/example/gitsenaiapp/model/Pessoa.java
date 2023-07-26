@@ -1,7 +1,10 @@
 package com.example.gitsenaiapp.model;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+
 public class Pessoa {
-    Integer id;
+    private Integer id;
     private String name;
 
     private String sexo;

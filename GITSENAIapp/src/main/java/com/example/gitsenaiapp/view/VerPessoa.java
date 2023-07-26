@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.Controller;
 
 import javax.websocket.server.PathParam;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class VerPessoa {
     }
 
     @DeleteMapping("/pessoa")
-    public String deletePerson(@PathParam("name") String name) {
+    public String deletePessoa(@PathParam("name") String name) {
         Pessoa pessoa = new Pessoa();
 
         return "Pessoa com o nome de " + name + " foi deletada";
@@ -33,10 +32,14 @@ public class VerPessoa {
         return controle.addPessoa(name, sexo);
     }
 
-    @PutMapping
-    public Pessoa updatePessoa(@PathParam("id") int id, @PathParam("name") String name) {
-        Pessoa p = new Pessoa();
-         return p;
+    @PutMapping("/pessoa")
+    public Pessoa updatePessoa(@PathParam("name") String name, @PathParam("sexo") String sexo) {
+       return controle.editPessoa(name, sexo);
+    }
+
+    @GetMapping("/all")
+    public List<Pessoa> listAll(){
+        return controle.listAll();
     }
 
     @GetMapping("/home")
