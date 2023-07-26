@@ -1,4 +1,4 @@
-package com.example.gitsenaiapp;
+package com.example.gitsenaiapp.model;
 
 public class Pessoa {
     Integer id;
