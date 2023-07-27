@@ -31,7 +31,7 @@ public class Controle {
         pessoa.setSexo(sexo);
         id++;
         pessoa.setId(id);
-        pessoas.add(pessoa);
+        personRepository.save(pessoa);
         return pessoa;
     }
 
