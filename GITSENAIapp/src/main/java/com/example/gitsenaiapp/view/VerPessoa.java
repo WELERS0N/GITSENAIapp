@@ -22,7 +22,7 @@ public class VerPessoa {
 
     @DeleteMapping("/pessoa")
     public String deletePessoa(@PathParam("name") String name) {
-        Pessoa pessoa = new Pessoa();
+        controle.removePessoa(name);
 
         return "Pessoa com o nome de " + name + " foi deletada";
     }

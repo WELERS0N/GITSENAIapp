@@ -7,10 +7,10 @@ public interface ContaCorrente {
 
     Double sacar(Double quantidade, Conta conta);
 
-    void sacar(Double quantidade);
+
     void depositar(Double quantidade, Conta conta);
 
-    void transferir(Double quantidade, Conta conta);
+    String transferir(Long contaOrigem, Long contaDestina, Double valor);
 
     Double consultaSaldo(ContaCorrentePF conta);
 
