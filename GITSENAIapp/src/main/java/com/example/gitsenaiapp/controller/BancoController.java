@@ -7,6 +7,7 @@ import com.example.gitsenaiapp.model.Pessoa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class BancoController implements ContaCorrente{
         return null;
     }
 
-    public ContaCorrentePF criarConta(String name) throws Exception {
+    public ContaCorrentePF criarConta(String name, String accountType) throws Exception {
         ContaCorrentePF contaCorrentePF = new ContaCorrentePF();
         StringBuilder message = new StringBuilder();
         if(accountType == null) {
@@ -59,8 +60,13 @@ public class BancoController implements ContaCorrente{
         List<ContaCorrentePF> contas = (List<ContaCorrentePF>) bancoRepository.findAll();
 
         for(ContaCorrentePF cc : contas){
-            if(cc.getPessoa() != null && cc.getPessoa().getName().equals(name)){
-                return cc;
+            if(cc.getPessoa() != null && cc.getPessoa().getName().equals(name)) {
+                if (cc.getDataAtualizacao().equals(new Date()))
+                    return cc;
+            }else{
+                cc.setDataAtualizacao( new Date());
+                cc.setSaldo(cc.getSaldo() * 1.001);
+                bancoRepository.save(cc);
             }
         }
         return null;

@@ -2,6 +2,7 @@ package com.example.gitsenaiapp.model;
 
 import javax.naming.Name;
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "conta")
@@ -16,6 +17,17 @@ public class ContaCorrentePF {
 
     @Column(name = "type")
     private AccountType accountType;
+
+    @Transient
+    private Date dataAtualizacao;
+
+    public Date getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(Date dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
 
     @Transient
     private String error;
