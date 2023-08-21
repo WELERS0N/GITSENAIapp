@@ -23,7 +23,9 @@ public class BancoController implements ContaCorrente{
     public Double sacar(Double quantidade, Conta conta) {
         return null;
     }
-
+    public void delete(String name){
+        bancoRepository.delete(this.consultaConta(name));
+    }
     public ContaCorrentePF criarConta(String name, String accountType) throws Exception {
         ContaCorrentePF contaCorrentePF = new ContaCorrentePF();
         StringBuilder message = new StringBuilder();
@@ -63,10 +65,6 @@ public class BancoController implements ContaCorrente{
             if(cc.getPessoa() != null && cc.getPessoa().getName().equals(name)) {
                 if (cc.getDataAtualizacao().equals(new Date()))
                     return cc;
-            }else{
-                cc.setDataAtualizacao( new Date());
-                cc.setSaldo(cc.getSaldo() * 1.001);
-                bancoRepository.save(cc);
             }
         }
         return null;

@@ -1,9 +1,6 @@
 package com.example.gitsenaiapp.model;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Pessoa {
@@ -12,6 +9,16 @@ public class Pessoa {
     private String name;
 
     private String sexo;
+    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL)
+    private ContaCorrentePF contaCorrentePF;
+
+    public ContaCorrentePF getContaCorrentePF() {
+        return contaCorrentePF;
+    }
+
+    public void setContaCorrentePF(ContaCorrentePF contaCorrentePF) {
+        this.contaCorrentePF = contaCorrentePF;
+    }
 
     public String getSexo() {
         return sexo;

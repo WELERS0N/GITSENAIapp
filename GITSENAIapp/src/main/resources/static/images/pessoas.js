@@ -25,7 +25,7 @@ formPessoa.addEventListener("submit", function (event){
     let formDados = new FormData(formPessoa);
     let parametros = new URLSearchParams(formDados);
 
-    fetch("/pessoa?"+parametros.toString(), {
+    fetch("/person?"+parametros.toString(), {
         method: "POST"
     }).then(response => response.json())
         .then(data => {

@@ -1,6 +1,5 @@
 package com.example.gitsenaiapp.model;
 
-import javax.naming.Name;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,6 +12,7 @@ public class ContaCorrentePF {
     private Double saldo;
 
     @OneToOne
+    @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
 
     @Column(name = "type")
@@ -21,6 +21,8 @@ public class ContaCorrentePF {
     @Transient
     private Date dataAtualizacao;
 
+    private String error;
+
     public Date getDataAtualizacao() {
         return dataAtualizacao;
     }
@@ -28,9 +30,6 @@ public class ContaCorrentePF {
     public void setDataAtualizacao(Date dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
-
-    @Transient
-    private String error;
 
     public AccountType getAccountType() {
         return accountType;
